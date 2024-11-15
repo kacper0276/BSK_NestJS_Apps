@@ -1,10 +1,8 @@
 version: '3'
 services:
-  high-disk-io:
+  network-latency-monitor:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - /tmp:/tmp
     ports:
-      - '3001:3000'
+      - '3002:3000'
