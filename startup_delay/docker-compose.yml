@@ -1,0 +1,10 @@
+version: '3'
+services:
+  startup-delay:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - STARTUP_TIME=0
+    ports:
+      - '3000:3000'
