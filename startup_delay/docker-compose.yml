@@ -7,4 +7,4 @@ services:
     environment:
       - STARTUP_TIME=0
     ports:
-      - '3000:3000'
+      - '3007:3000'
