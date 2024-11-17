@@ -1,13 +1,13 @@
-version: '3'
+version: '3.8'
 services:
   memory-hog:
     build:
       context: .
       dockerfile: Dockerfile
-    command: npm run start
     ports:
-      - '3003:3000'
+      - '3000:3000'
     deploy:
       resources:
         limits:
-          memory: 100M
+          memory: 500M # Ograniczenie pamięci
+    restart: always
