@@ -4,13 +4,18 @@ import * as path from 'path';
 
 @Injectable()
 export class AppService {
+  private readonly filePath = path.join(__dirname, 'large-file.txt');
+
   performDiskIo(): string {
-    const filePath = path.join(__dirname, 'io_test.txt');
-    for (let i = 0; i < 1000; i++) {
-      fs.writeFileSync(filePath, `Disk I/O test - ${i}\n`, { flag: 'a' });
+    const data = 'A'.repeat(1024 * 1024);
+    for (let i = 0; i < 100; i++) {
+      fs.appendFileSync(this.filePath, data);
     }
-    const data = fs.readFileSync(filePath, 'utf-8');
-    fs.unlinkSync(filePath);
-    return `Performed disk I/O with 1000 writes and reads. Data size: ${data.length} bytes.`;
+
+    const content = fs.readFileSync(this.filePath, 'utf-8');
+
+    fs.unlinkSync(this.filePath);
+
+    return `Zapisano i odczytano plik o rozmiarze ${content.length} znaków`;
   }
 }

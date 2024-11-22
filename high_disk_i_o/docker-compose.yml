@@ -4,7 +4,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - /tmp:/tmp
     ports:
       - '3002:3000'
+    deploy:
+      resources:
+        limits:
+          blkio_config:
+            weight: 500 # Ograniczenie prędkości zapisu/odczytu (wartość od 10 do 1000)
+    restart: always
+    volumes:
+      - ./data:/app/data # Wolumin do zapisywania danych
