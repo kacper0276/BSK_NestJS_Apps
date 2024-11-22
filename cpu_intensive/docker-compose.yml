@@ -10,4 +10,4 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.5'
+          cpus: '0.5' # 50% mocy jednego rdzenia

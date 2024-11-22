@@ -2,11 +2,20 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  simulateCpuLoad(): string {
-    const start = Date.now();
-    while (Date.now() - start < 10000) {
-      Math.sqrt(Math.random());
+  cpuIntensiveTask(): string {
+    const isPrime = (num: number): boolean => {
+      if (num < 2) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    };
+
+    let count = 0;
+    for (let i = 2; i < 1e6; i++) {
+      if (isPrime(i)) count++;
     }
-    return 'CPU load simulated for 10 seconds!';
+
+    return `Znaleziono ${count} liczb pierwszych!`;
   }
 }
