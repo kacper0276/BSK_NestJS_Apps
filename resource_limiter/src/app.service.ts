@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Worker } from 'worker_threads';
 
 @Injectable()
 export class AppService {
